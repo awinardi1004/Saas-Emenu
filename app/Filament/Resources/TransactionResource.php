@@ -76,7 +76,7 @@ class TransactionResource extends Resource
                         'failed' => 'Gagal'
                     ])
                     ->required(),
-                    Forms\Components\Repeater::make('transactionDetails')
+                Forms\Components\Repeater::make('transactionDetails')
                     ->relationship()
                     ->schema([
                         Forms\Components\Select::make('product_id')
