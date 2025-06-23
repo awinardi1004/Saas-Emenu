@@ -13,7 +13,7 @@ jobs:
       with:
         server: ftp://46.202.138.93
         username: u124296332.emenu
-        password: ${{ secrets.FTP_PASSWORD }}
+        password: ${{ secrets.FTP_SECRET_KEY }}
         server-dir: laravel/
         exclude: |
           **/.git*
