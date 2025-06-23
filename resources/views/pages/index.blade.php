@@ -11,10 +11,6 @@
             <p class="text-white text-sm">Welcome To,</p>
             <h1 class="text-white font-semibold">{{ $store->name}}</h1>
         </div>
-        <a href="#"
-            class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white bg-opacity-20">
-            <img src="assets/images/icons/ic_bell.svg" class="w-[28px] h-[28px]" alt="icon">
-        </a>
     </div>
 
     <h1 class="text-white font-[600] text-2xl leading-[30px] mt-[20px]">Order Delicious Meal!</h1>
