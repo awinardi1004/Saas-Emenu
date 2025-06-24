@@ -14,22 +14,28 @@
     </div>
 
     <h1 class="text-white font-[600] text-2xl leading-[30px] mt-[20px]">Order Delicious Meal!</h1>
-
     <div class="absolute bottom-0 left-0 right-0 w-full gap-2 px-5">
-        <label
-            class="flex items-center w-full rounded-full p-[8px_8px] gap-3 bg-white ring-1 ring-[#F1F2F6] focus-within:ring-[#F3AF00] transition-all duration-300">
-            <img src="assets/images/icons/ic_search.svg" class="w-8 h-8 flex shrink-0" alt="icon">
-            <input type="text" name="search" id=""
-                class="appearance-none outline-none w-full font-semibold placeholder:text-ngekos-grey placeholder:font-light"
-                placeholder="Search menu, or etc...">
-        </label>
+        <form action="{{ route('product.find-results', ['username' => $store->username]) }}" method="GET" class="w-full">
+            <label class="flex items-center w-full rounded-full p-[8px_8px] gap-3 bg-white ring-1 ring-[#F1F2F6] focus-within:ring-[#F3AF00] transition-all duration-300">
+                <img src="{{ asset('assets/images/icons/ic_search.svg') }}" class="w-8 h-8 flex shrink-0" alt="icon">
+                <input 
+                    type="text" 
+                    name="search" 
+                    class="appearance-none outline-none w-full font-semibold placeholder:text-ngekos-grey placeholder:font-light" 
+                    placeholder="Search menu, or etc..."
+                    value="{{ request('search') }}"
+                >
+                @if(isset($category))
+                    <input type="hidden" name="category" value="{{ $category->slug }}">
+                @endif
+            </label>
+        </form>
     </div>
     </div>
 
     <div id="Categories" class="relative flex flex-col px-5 mt-[20px]">
     <div class="flex items-end justify-between ">
         <h1 class="text-[#353535] font-[500] text-lg">Explore Categories</h1>
-        <a href="#" class="text-[#FF801A] text-sm ">See All</a>
     </div>
 
     <div class="swiper w-full">
@@ -55,7 +61,6 @@
     <div id="Favorites" class="relative flex flex-col px-5 mt-[20px]">
         <div class="flex items-end justify-between">
             <h1 class="text-[#353535] font-[500] text-lg">Menu Favorite</h1>
-            <a href="#" class="text-[#FF801A] text-sm ">See All</a>
         </div>
 
         <div class="swiper w-full">
@@ -111,7 +116,6 @@
     <div id="Recomendations" class="relative flex flex-col px-5 mt-[20px]">
         <div class="flex items-end justify-between ">
             <h1 class="text-[#353535] font-[500] text-lg">Chef's Recommendations</h1>
-            <a href="#" class="text-[#FF801A] text-sm ">See All</a>
         </div>
         <div class="flex flex-col gap-4 mt-[10px]">
             @foreach ($products as $product)

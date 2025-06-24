@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div id="TopNav" class="relative flex items-center justify-between px-5 py-3 bg-white">
-        <a href="{{ route('product.find', $store->username) }}"
+        <a href="{{ route('index', $store->username) }}"
             class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-[#F0F1F3]">
             <img src="{{ asset('assets/images/icons/Arrow - Left.svg') }}" class="w-[28px] h-[28px]" alt="icon">
         </a>

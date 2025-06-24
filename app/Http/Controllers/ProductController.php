@@ -38,8 +38,15 @@ class ProductController extends Controller
             $products = $products->where('product_category_id', $category->id);
         }
 
-        if (isset($request->search)) {
-            $products = $products->where('name', 'like', '%' . $request->search . '%');
+        if ($request->filled('search')) {
+            $keyword = '%' . $request->search . '%';
+            
+            $products->where(function($query) use ($keyword) {
+                $query->where('name', 'like', $keyword)
+                    ->orWhereHas('productCategory', function($q) use ($keyword) {
+                        $q->where('name', 'like', $keyword);
+                    });
+            });
         }
 
         $products = $products->get();
